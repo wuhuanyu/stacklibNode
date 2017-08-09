@@ -1,0 +1,7 @@
+node_modules/**
+dist/**
+doc/**
+bin/nodemon
+bin/babel
+.idea/*
+.vscode/*
