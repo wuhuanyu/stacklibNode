@@ -6,7 +6,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 const bbcRouter = require('./routes/bbcRouter');
 const mongoose = require('mongoose');
-const redis = require('express-redis-cache')()  ;
+// const redis = require('express-redis-cache')()  ;
 
 const parser = require('./utils/urlParser').urlParser;
 var app = express();
