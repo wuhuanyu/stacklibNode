@@ -5,12 +5,11 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 const bbcRouter = require('./routes/bbcRouter');
+const mediumRouter = require('./routes/mediumRouter');
 
 import * as routers from './routes/index';
-
 import * as models from './model/index';
 const mongoose = require('mongoose');
-
 const parser = require('./utils/urlParser').urlParser;
 var app = express();
 
@@ -65,8 +64,7 @@ app.use(function (req, res, next) {
     }
 });
 
-app.use('/api/v1/bbc', bbcRouter);
-// app.use('/api/v1/medium', routers.MediumRouter);
+app.use('/api/v1/bbc', routers.BBCRouter);
 
 app.use(function (err, req, res, next) {
     res.locals.message = err.message;

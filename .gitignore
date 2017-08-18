@@ -5,3 +5,4 @@ bin/nodemon
 bin/babel
 .idea/*
 .vscode/*
+babel-test
