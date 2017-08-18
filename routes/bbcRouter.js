@@ -6,7 +6,7 @@ const commonError = require('../utils/commonError');
 const commonCheck = require('../utils/commonCheck');
 const commonMsg= require('../utils/commonMsg');
 const utility = require('../utils/utility');
-const redis = require('express-redis-cache')();
+// const redis = require('express-redis-cache')();
 
 router.use(function (req,res,next) {
     let isQueryValid = true;
