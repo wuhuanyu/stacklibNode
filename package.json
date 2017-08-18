@@ -1,8 +1,8 @@
 {
     "name": "stackLib",
     "version": "0.0.0",
-    "babel":{
-        "ignore":[
+    "babel": {
+        "ignore": [
             "node_modules/**/*.js",
             "doc/**/*.js"
         ]
@@ -10,6 +10,7 @@
     "private": true,
     "scripts": {
         "test": "mocha",
+        "build": "babel **/**.js app.js --ignore dist node_modules public views --out-dir dist --presets es2015 --watch",
         "start": "node ./bin/www"
     },
     "dependencies": {

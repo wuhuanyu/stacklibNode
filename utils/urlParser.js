@@ -4,6 +4,7 @@ const cMsg = require('./commonMsg');
 const isNum = utility.isNum;
 
 function  parser(req,res,next) {
+    console.log('------parser');
     let isUrlValid = true;
     let crawled_at = req.query.crawled_at? req.query.crawled_at:(new Date()).getTime();
     let count = req.query.count? req.query.count: '5';
