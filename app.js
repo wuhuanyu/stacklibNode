@@ -53,6 +53,7 @@ app.use(function (req, res, next) {
             .fields
             .split(',')
         : defaultFields;
+        console.log(fields);
     if (!fields.every(f => defaultFields.indexOf(f) > -1)) {
         isQueryValid = false;
     }
@@ -65,6 +66,7 @@ app.use(function (req, res, next) {
 });
 
 app.use('/api/v1/bbc', routers.BBCRouter);
+app.use('/api/v1/mbook',routers.MBookRouter);
 
 app.use(function (err, req, res, next) {
     res.locals.message = err.message;
@@ -73,7 +75,7 @@ app.use(function (err, req, res, next) {
         .get('env') === 'development'
         ? err
         : {};
-    res.status(err.status);
+    // res.status(err.status&&err.status);
     res.json({error: err.message});
     res.end();
 });

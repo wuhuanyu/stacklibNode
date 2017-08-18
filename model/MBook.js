@@ -22,7 +22,7 @@ MBook.fields = [
     'title',
     'image_urls',
     'summary',
-    'reviews_urls',
+    'review_urls',
     'url'
 ];
 
@@ -36,5 +36,5 @@ MBook.findRecent = (count = 5, fileds = MBook.fields) => MBook
     .select(MBook.fields.join(' '));
 
 
-
+module.exports=MBook;
 
