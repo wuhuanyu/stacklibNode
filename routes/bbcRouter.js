@@ -8,20 +8,20 @@ const commonMsg= require('../utils/commonMsg');
 const utility = require('../utils/utility');
 // const redis = require('express-redis-cache')();
 
-router.use(function (req,res,next) {
-    let isQueryValid = true;
-    let fields = req.query.fields? req.query.fields.split(','):BBC.fields;
-    if(!fields.every(f=>BBC.fields.indexOf(f)>-1)){
-        isQueryValid = false;
-    }
-    if(!isQueryValid){
-        next(commonError.get400(commonMsg.QueryParamsInvalid));
-    }
-    else{
-        req.checked.fields = fields;
-        next();
-    }
-});
+// router.use(function (req,res,next) {
+//     let isQueryValid = true;
+//     let fields = req.query.fields? req.query.fields.split(','):BBC.fields;
+//     if(!fields.every(f=>BBC.fields.indexOf(f)>-1)){
+//         isQueryValid = false;
+//     }
+//     if(!isQueryValid){
+//         next(commonError.get400(commonMsg.QueryParamsInvalid));
+//     }
+//     else{
+//         req.checked.fields = fields;
+//         next();
+//     }
+// });
 
 /**
  * @api {GET} /api/v1/bbc/id-:id  Get news by :id
