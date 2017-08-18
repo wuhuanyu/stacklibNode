@@ -1,10 +1,12 @@
-var express = require('express');
-var router = express.Router();
-const m =1 ;
+// export {
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
-});
+// }
 
-module.exports = router;
+
+export const BBCRouter = require('./bbcRouter');
+export const MediumRouter = require('./mbookRouter');
+export const MBookRouter = require('./mbookRouter');
+
+// export{
+//   BBCRouter,MediumRouter,MBookRouter
+// };
