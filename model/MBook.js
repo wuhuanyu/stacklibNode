@@ -30,7 +30,11 @@ MBook.findById = (id, fileds = MBook.fields) => MBook
     .find({_id: id})
     .select(fileds.join(' '));
 
-MBook.findByCount = (count = 5, fileds = MBook.fields) => MBook
+MBook.findRecent = (count = 5, fileds = MBook.fields) => MBook
     .find({})
     .limit(count)
     .select(MBook.fields.join(' '));
+
+
+
+
