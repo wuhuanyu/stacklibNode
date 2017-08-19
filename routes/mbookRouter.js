@@ -20,7 +20,7 @@ const emsg = require('../utils/commonMsg');
  */
 
 router.get(/^\/id-(\w+)$/, (req, res, next) => {
-    MBook.findById(id, req.checked.fields)
+    MBook.findById(req.params[0], req.checked.fields)
         .then(data => {
             console.log(data);
             if (data.length == 0) {

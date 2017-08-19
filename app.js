@@ -58,7 +58,6 @@ app.use(function (req, res, next) {
             .fields
             .split(',')
         : defaultFields;
-        console.log(fields);
     if (!fields.every(f => defaultFields.indexOf(f) > -1)) {
         isQueryValid = false;
     }
