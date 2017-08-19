@@ -7,6 +7,8 @@ var bodyParser = require('body-parser');
 const bbcRouter = require('./routes/bbcRouter');
 const mediumRouter = require('./routes/mediumRouter');
 
+const commonError = require('./utils/commonError');
+const commonMsg = require('./utils/commonMsg');
 import * as routers from './routes/index';
 import * as models from './model/index';
 const mongoose = require('mongoose');
