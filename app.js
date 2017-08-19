@@ -6,13 +6,6 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 const bbcRouter = require('./routes/bbcRouter');
 const mediumRouter = require('./routes/mediumRouter');
-<<<<<<< f472dc4eb447977e2ad0f55785784ab676edf343
-=======
-
-
-
-const mongoose = require('mongoose');
->>>>>>> find by id
 
 const commonError = require('./utils/commonError');
 const commonMsg = require('./utils/commonMsg');
@@ -78,6 +71,7 @@ app.use(function (req, res, next) {
 
 app.use('/api/v1/bbc', routers.BBCRouter);
 app.use('/api/v1/mbook', routers.MBookRouter);
+app.use('/api/v1/medium',routers.MediumRouter);
 app.use('/api/v1/mbookr', routers.MBookRRouter);
 
 app.use(function (err, req, res, next) {
