@@ -87,7 +87,17 @@ BBC.findByText = (text, fields, count, crawled_at) => {
         .limit(count)
         .sort({'crawled_at': -1});
 };
-BBC.findByCount=(count,fields)=>{
-    return BBC.find({}).limit(count);
+BBC.findByCount = (count, fields) => {
+    return BBC
+        .find({})
+        .limit(count);
 };
+
+BBC.findRecent = (count = 5, fields = BBC.fields) => {
+    return BBC
+        .find({})
+        .sort({crawled_at: -1})
+        .limit(count)
+        .select(fields.join(' '));
+}
 module.exports = BBC;

@@ -32,6 +32,7 @@ MBook.findById = (id, fileds = MBook.fields) => MBook
 
 MBook.findRecent = (count = 5, fileds = MBook.fields) => MBook
     .find({})
+    .sort({crawled_at: -1})
     .limit(count)
     .select(MBook.fields.join(' '));
 

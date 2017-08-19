@@ -4,23 +4,15 @@ const winston = require('winston');
 const BBC = require('../model/BBCItem');
 const commonError = require('../utils/commonError');
 const commonCheck = require('../utils/commonCheck');
-const commonMsg= require('../utils/commonMsg');
+const commonMsg = require('../utils/commonMsg');
 const utility = require('../utils/utility');
 
-// router.use(function (req,res,next) {
-//     let isQueryValid = true;
-//     let fields = req.query.fields? req.query.fields.split(','):BBC.fields;
-//     if(!fields.every(f=>BBC.fields.indexOf(f)>-1)){
-//         isQueryValid = false;
-//     }
-//     if(!isQueryValid){
-//         next(commonError.get400(commonMsg.QueryParamsInvalid));
-//     }
-//     else{
-//         req.checked.fields = fields;
-//         next();
-//     }
-// });
+// router.use(function (req,res,next) {     let isQueryValid = true;     let
+// fields = req.query.fields? req.query.fields.split(','):BBC.fields;
+// if(!fields.every(f=>BBC.fields.indexOf(f)>-1)){         isQueryValid = false;
+//     }     if(!isQueryValid){
+// next(commonError.get400(commonMsg.QueryParamsInvalid));     }     else{
+//   req.checked.fields = fields;         next();     } });
 
 /**
  * @api {GET} /api/v1/bbc/id-:id  Get news by :id
@@ -85,16 +77,17 @@ const utility = require('../utils/utility');
  }
  */
 
-router.get(/^\/id-(\w+)$/,(req,res,next)=>{
+router.get(/^\/id-(\w+)$/, (req, res, next) => {
 
     let id = req.params[0];
-    BBC.findById(id,req.checked.fields)
-        .then((data)=>{
-            if(data!==null){
+    BBC
+        .findById(id, req.checked.fields)
+        .then((data) => {
+            if (data !== null) {
                 res.json(data);
             }
-        },(err)=>{
-        next(commonError.get404(commonMsg.NoSuchResource));
+        }, (err) => {
+            next(commonError.get404(commonMsg.NoSuchResource));
         });
 });
 
@@ -143,26 +136,25 @@ router.get(/^\/id-(\w+)$/,(req,res,next)=>{
 
 
  */
-router.get(/^\/tag-(\w+)$/,(req,res,next)=>{
+router.get(/^\/tag-(\w+)$/, (req, res, next) => {
 
     let tag = req.params[0];
 
-
-    if(BBC.tags.indexOf(tag)===-1){
+    if (BBC.tags.indexOf(tag) === -1) {
         next(commonError.get404(commonMsg.NoSuchResource));
     }
-    BBC.findByTag(tag,req.checked.count,req.checked.crawled_at,req.checked.fields)
-        .then((data)=>{
-            if(data.length>0){
+    BBC
+        .findByTag(tag, req.checked.count, req.checked.crawled_at, req.checked.fields)
+        .then((data) => {
+            if (data.length > 0) {
                 let result = {};
                 result.count = data.length;
                 result.data = data;
                 res.json(result);
-            }
-            else{
+            } else {
                 next(commonError.get404(commonMsg.NoSuchResource));
             }
-        },(err)=>{
+        }, (err) => {
             next(commonError.get404(commonMsg.NoSuchResource));
         });
 });
@@ -215,35 +207,41 @@ router.get(/^\/tag-(\w+)$/,(req,res,next)=>{
  *
  *
  */
-router.get(/^\/search$/,(req,res,next)=>{
+router.get(/^\/search$/, (req, res, next) => {
 
-    if(!req.query.keys){
+    if (!req.query.keys) {
         next(commonError.get400(commonMsg.QueryParamsInvalid));
     }
 
-    let keys = req.query.keys.split(',');
-    let words =[];
-    let isKeysValid = keys.every(i=>i.length>=2);
-    if(!isKeysValid){
+    let keys = req
+        .query
+        .keys
+        .split(',');
+    let words = [];
+    let isKeysValid = keys.every(i => i.length >= 2);
+    if (!isKeysValid) {
         next(commonError.get400(commonMsg.QueryKeyWordsTooShort));
-    }
-    else{
-        keys.forEach((key)=>{
-            utility.n_param(2,key).forEach(k=>words.push(k));
+    } else {
+        keys.forEach((key) => {
+            utility
+                .n_param(2, key)
+                .forEach(k => words.push(k));
         });
-        BBC.findByText(keys.join(' '),req.checked.fields,req.checked.count,req.checked.crawled_at)
-            .then((data)=>{
-                if(data.length!==0){
-                    res.json({
-                        count:data.length,
-                        data:data
-                    });
-                }
-                else next(commonError.get404(commonMsg.NoSuchResource));
-            },(err)=>next(commonError.get404(commonMsg.NoSuchResource)));
+        BBC.findByText(keys.join(' '), req.checked.fields, req.checked.count, req.checked.crawled_at).then((data) => {
+            if (data.length !== 0) {
+                res.json({count: data.length, data: data});
+            } else 
+                next(commonError.get404(commonMsg.NoSuchResource));
+            }
+        , (err) => next(commonError.get404(commonMsg.NoSuchResource)));
     }
 });
 
+router.get(/recent/, (req, res, next) => {
+    BBC
+        .findRecent(req.checked.count, req.checked.fields)
+        .then((data) => {
+            res.json(data);
+        })
+});
 module.exports = router;
-
-

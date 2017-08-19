@@ -53,7 +53,7 @@ Medium.findByCount = function (count = 5, fields = Medium.fields) {
 
 Medium.findRecent = (count, fields = Medium.fields) => Medium
     .find({})
-    .sort('crawled_at:-1')
+    .sort({crawled_at:-1})
     .limit(count)
     .select(fields.join(' '));
 

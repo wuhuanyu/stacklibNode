@@ -30,13 +30,13 @@ CNN.findRecent = (tag = 'all', count = 5, fields = CNN.fields) => {
     if (tag === 'all') {
         return CNN
             .find({})
-            .sort('crawled_at:-1')
+            .sort({crawled_at:-1})
             .limit(count)
             .select(fields.join(' '))
     } else {
         return CNN
             .find({tag: tag})
-            .sort('crawled_at:-1')
+            .sort({crawled_at:-1})
             .limit(count)
             .select(fields.join(' '))
     }

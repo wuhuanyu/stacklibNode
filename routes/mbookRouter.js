@@ -55,7 +55,7 @@ router.get(/^\/id-(\w+)$/, (req, res, next) => {
  */
 router.get(/^\/recent$/, (req, res, next) => {
     let { count, fields } = req.checked;
-    MBook.find({}).sort('crawled_at:-1').limit(count).select(fields.join(' '))
+    MBook.find({}).sort({crawled_at:-1}).limit(count).select(fields.join(' '))
         .then(data => {
             console.log(data);
             if (data.length !== 0) {
