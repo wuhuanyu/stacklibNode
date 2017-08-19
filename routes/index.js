@@ -2,6 +2,6 @@
 
 
 export const BBCRouter = require('./bbcRouter');
-export const MediumRouter = require('./mbookRouter');
+export const MediumRouter = require('./mediumRouter');
 export const MBookRouter = require('./mbookRouter');
 export const MBookRRouter = require('./mbookrRouter');

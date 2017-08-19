@@ -54,7 +54,7 @@ Medium.findByCount = function (count = 5, fields = Medium.fields) {
 Medium.findRecent = (count, fields = Medium.fields) => Medium
     .find({})
     .sort('crawled_at:-1')
-    .limit(req.checked.count)
-    .select(req.checked.fields.join(' '));
+    .limit(count)
+    .select(fields.join(' '));
 
 module.exports = Medium;

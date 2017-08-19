@@ -147,10 +147,6 @@ router.get(/^\/tag-(\w+)$/,(req,res,next)=>{
 
     let tag = req.params[0];
 
-    /**
-     * check crawled_at
-     * @type {boolean|*}
-     */
 
     if(BBC.tags.indexOf(tag)===-1){
         next(commonError.get404(commonMsg.NoSuchResource));

@@ -7,7 +7,6 @@ const commonError = require('../utils/commonError');
 const commonCheck = require('../utils/commonCheck');
 
 const commonMsg = require('../utils/commonMsg');
-const BBC = require('../model/BBCItem');
 
 const utility = require('../utils/utility');
 
