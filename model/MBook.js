@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-
+const ObjectId = mongoose.Types.ObjectId;
 mongoose.Promise = global.Promise;
 
 const Schema = mongoose.Schema;
@@ -22,15 +22,17 @@ MBook.fields = [
     'title',
     'image_urls',
     'summary',
-    'reviews_urls',
+    'review_urls',
     'url'
 ];
 
 MBook.findById = (id, fileds = MBook.fields) => MBook
-    .find({_id: id})
+    .find({_id: new ObjectId(id)})
     .select(fileds.join(' '));
 
-MBook.findByCount = (count = 5, fileds = MBook.fields) => MBook
+MBook.findRecent = (count = 5, fileds = MBook.fields) => MBook
     .find({})
     .limit(count)
     .select(MBook.fields.join(' '));
+
+module.exports = MBook;
