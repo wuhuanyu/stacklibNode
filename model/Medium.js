@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-// mongoose.connect('mongodb://localhost/stacklib');
+const ObjectId = mongoose.Types.ObjectId;
 mongoose.Promise = global.Promise;
 const Schema = mongoose.Schema;
 const MediumSchema = new Schema({
@@ -9,7 +9,7 @@ const MediumSchema = new Schema({
     url: String,
     text: [],
     image_urls: []
-},{collection:'mediums'});
+}, {collection: 'mediums'});
 
 const Medium = mongoose.model('medium', MediumSchema);
 
@@ -37,10 +37,10 @@ Medium.findBeforeTime = (time, fields = Medium.fields) => {
         .select(fields.join(' '));
 };
 
-Medium.findById =  (id,fields)=> {
-    // console.log('----from medium');
-    console.log(id);
-    return Medium.find({_id:id}).select(fields.join(' '));
+Medium.findById = (id, fields) => {
+    return Medium
+        .find({_id: new ObjectId(id)})
+        .select(fields.join(' '));
 };
 
 Medium.findByCount = function (count = 5, fields = Medium.fields) {
@@ -50,5 +50,11 @@ Medium.findByCount = function (count = 5, fields = Medium.fields) {
         .select(fields.join(' '))
         .limit(count);
 };
+
+Medium.findRecent = (count, fields = Medium.fields) => Medium
+    .find({})
+    .sort('crawled_at:-1')
+    .limit(req.checked.count)
+    .select(req.checked.fields.join(' '));
 
 module.exports = Medium;
