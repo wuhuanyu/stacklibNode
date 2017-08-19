@@ -19,7 +19,7 @@ app.set('view engine', 'ejs');
 mongoose.connect('mongodb://localhost:27017/stacklib');
 app.use(logger('dev'));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -42,6 +42,9 @@ app.use(function (req, res, next) {
         case 'mbook':
             defaultFields = models.MBook.fields;
             break;
+        case 'mbookr':
+            defaultFields = models.MBookR.fields;
+            break;
         default:
             break;
     }
@@ -53,7 +56,7 @@ app.use(function (req, res, next) {
             .fields
             .split(',')
         : defaultFields;
-        console.log(fields);
+    console.log(fields);
     if (!fields.every(f => defaultFields.indexOf(f) > -1)) {
         isQueryValid = false;
     }
@@ -66,7 +69,8 @@ app.use(function (req, res, next) {
 });
 
 app.use('/api/v1/bbc', routers.BBCRouter);
-app.use('/api/v1/mbook',routers.MBookRouter);
+app.use('/api/v1/mbook', routers.MBookRouter);
+app.use('/api/v1/mbookr', routers.MBookRRouter);
 
 app.use(function (err, req, res, next) {
     res.locals.message = err.message;
@@ -75,8 +79,8 @@ app.use(function (err, req, res, next) {
         .get('env') === 'development'
         ? err
         : {};
-    // res.status(err.status&&err.status);
-    res.json({error: err.message});
+    res.status(err.status || 400);
+    res.json({ error: err.message });
     res.end();
 });
 module.exports = app;
