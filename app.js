@@ -6,6 +6,13 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 const bbcRouter = require('./routes/bbcRouter');
 const mediumRouter = require('./routes/mediumRouter');
+<<<<<<< f472dc4eb447977e2ad0f55785784ab676edf343
+=======
+
+
+
+const mongoose = require('mongoose');
+>>>>>>> find by id
 
 const commonError = require('./utils/commonError');
 const commonMsg = require('./utils/commonMsg');

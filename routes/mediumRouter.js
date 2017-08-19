@@ -11,23 +11,6 @@ const BBC = require('../model/BBCItem');
 
 const utility = require('../utils/utility');
 
-router.use(function (req, res, next) {
-    let isQueryValid = true;
-    let fields = req.query.fields
-        ? req
-            .query
-            .fields
-            .split(',')
-        : Medium.fields;
-
-    if (!fields.every(f => Medium.fields.indexOf(f) > -1)) {
-        next(commonError.get400(commonMsg.QueryParamsInvalid));
-    } else {
-        req.checked.fields = fields;
-        next();
-    }
-});
-
 /**
  * @api {GET} /api/v1/medium/id-:id Medium Article By :id
  * @apiName GetById
@@ -40,7 +23,7 @@ router.use(function (req, res, next) {
  * @apiDescription Get Medium Article by id and fileds , Supported Fields are source,crawled_at,title,text,'image_urls','id','url'
  *
  * @apiSuccessExample Success-Response
- *  HTTP/1.1 200 OK 
+ *  HTTP/1.1 200 OK
  * {
   "count": 1,
   "data": [
@@ -57,13 +40,13 @@ router.use(function (req, res, next) {
   @apiError No Such Resource Probably provide wrong :id
 
   @apiErrorExample {json}
-  HTTP/1.1  400 WrongFields 
+  HTTP/1.1  400 WrongFields
 
   {
   "error": "Query params invalid"
   }
 
-  @apiError     
+  @apiError
  *
  *
  */
@@ -85,10 +68,19 @@ router.get(/^\/id-(\w+)$/, (req, res, next) => {
 
 });
 
-router.get(/count/, function (req, res, next) {
+router.get(/recent/, function (req, res, next) {
     Medium
-        .findByCount()
-        .then((data) => res.json(data));
-});
+        .findRecent(req.checked.count, req.checked.fields)
+        .then((data) => {
+            if (data.length == 0) {
+                next(commonError.get404(commonMsg.NoSuchResource));
+            } else 
+                res.json({count: data.length, data: data});
 
+            }
+        )
+        .catch(err => {
+            next(commonError.get404(commonMsg.NoSuchResource));
+        })
+});
 module.exports = router;
