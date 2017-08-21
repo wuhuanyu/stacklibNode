@@ -8,6 +8,7 @@ const MBookRSchema = new Schema({
     text: Array,
     source: String,
     url: String,
+    book_hash: String,
     comments: [
         {
             text: [String],
@@ -20,7 +21,7 @@ const MBookRSchema = new Schema({
 const MBookR = mongoose.model('mbookr', MBookRSchema);
 
 MBookR.fields = [
-    'crawled_at', 'title', 'source', 'url', 'comments', 'text',
+    'crawled_at', 'title', 'source', 'url', 'comments', 'text', 'book_hash'
 ];
 
 MBookR.findById = (id, fields = MBookR.fields) => {
@@ -30,5 +31,9 @@ MBookR.findById = (id, fields = MBookR.fields) => {
 MBookR.findByUrl = (url, fields = MBookR.fields) =>
     MBookR.find({ url: url }).select(fields.join(' '));
 
+
+MBookR.findByHash = (hash, fields = MBookR.fields) => {
+    MBookR.find({ book_hash: hash }).select(fields.join(' '));
+}
 
 module.exports = MBookR;

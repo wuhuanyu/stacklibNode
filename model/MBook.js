@@ -11,7 +11,8 @@ const MBookSchema = new Schema({
     image_urls: [],
     summary: [],
     reviews_urls: [],
-    url: String
+    url: String,
+    hash_value:String,
 }, {collection: 'mbooks'});
 
 const MBook = mongoose.model('mbook', MBookSchema);
@@ -23,7 +24,8 @@ MBook.fields = [
     'image_urls',
     'summary',
     'review_urls',
-    'url'
+    'url',
+    'hash_value',
 ];
 
 MBook.findById = (id, fileds = MBook.fields) => MBook
@@ -33,7 +35,7 @@ MBook.findById = (id, fileds = MBook.fields) => MBook
 MBook.findRecent = (count = 5, fileds = MBook.fields) => MBook
     .find({})
     .sort({crawled_at: -1})
-    .limit(count)
+    .limit(count),
     .select(MBook.fields.join(' '));
 
 module.exports = MBook;

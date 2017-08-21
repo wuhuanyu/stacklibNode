@@ -40,4 +40,21 @@ router.get(/^\/url-(\w+)$/, (req, res, next) => {
 })
 
 
+
+router.get(/^\/hash-(\w+)/, (req, res, next) => {
+    let hash = req.params[0];
+
+    MBookR.findByHash(hash, req.checked.fields).then(data => {
+        if(data.length==0){
+            next(error.get404(emsg.NoSuchResource));
+        }
+        else{
+            res.json({count:1,data:data});
+        }
+    }).catch(e=>{
+        next(error.get400(e.message||emsg.CommontError));
+    })
+})
+
+
 module.exports = router;
