@@ -36,7 +36,7 @@ app.use(function (req, res, next) {
     let category = req
         .url
         .match(/^\/api\/v1\/(\w+)\/.*$/)[1];
-        console.log(category);
+    console.log(category);
     let defaultFields;
     switch (category) {
         case 'bbc':
@@ -53,6 +53,9 @@ app.use(function (req, res, next) {
             break;
         case 'cnn':
             defaultFields = models.CNN.fields;
+            break;
+        case 'reuters':
+            defaultFields = models.Reuters.fields;
             break;
         default:
             break;
@@ -81,6 +84,7 @@ app.use('/api/v1/mbook', routers.MBookRouter);
 app.use('/api/v1/medium', routers.MediumRouter);
 app.use('/api/v1/mbookr', routers.MBookRRouter);
 app.use('/api/v1/cnn', routers.CNNRouter);
+app.use('/api/v1/reuters',routers.ReutersRouter);
 
 app.use(function (err, req, res, next) {
     res.locals.message = err.message;

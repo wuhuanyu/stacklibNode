@@ -93,11 +93,18 @@ BBC.findByCount = (count, fields) => {
         .limit(count);
 };
 
-BBC.findRecent = (count = 5, fields = BBC.fields) => {
-    return BBC
-        .find({})
-        .sort({crawled_at: -1})
-        .limit(count)
-        .select(fields.join(' '));
-}
+BBC.findRecent = (tag = 'all', count = 5, fields = BBC.fields) => {
+    if (tag === 'all') {
+        return BBC
+            .find({})
+            .sort({crawled_at: -1})
+            .limit(count)
+            .select(fields.join(' '));
+    } else 
+        return BBC
+            .find({tag: tag})
+            .sort({crawled_at: -1})
+            .limit(count)
+            .select(fields.join(' '));
+    }
 module.exports = BBC;

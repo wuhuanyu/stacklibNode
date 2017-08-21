@@ -12,7 +12,7 @@ const utility = require('../utils/utility');
 // if(!fields.every(f=>BBC.fields.indexOf(f)>-1)){         isQueryValid = false;
 //     }     if(!isQueryValid){
 // next(commonError.get400(commonMsg.QueryParamsInvalid));     }     else{
-//   req.checked.fields = fields;         next();     } });
+// req.checked.fields = fields;         next();     } });
 
 /**
  * @api {GET} /api/v1/bbc/id-:id  Get news by :id
@@ -238,10 +238,19 @@ router.get(/^\/search$/, (req, res, next) => {
 });
 
 router.get(/recent/, (req, res, next) => {
+    let tag = req.query.tag || 'all';
+
     BBC
-        .findRecent(req.checked.count, req.checked.fields)
+        .findRecent(tag, req.checked.count, req.checked.fields)
         .then((data) => {
-            res.json(data);
+            if (data.length == 0) {
+                next(commonError.get404(commonMsg.NoSuchResource));
+            } else {
+                res.json({count: data.length, data: data});
+            }
+        })
+        .catch(e => {
+            next(commonError.get400(e.message || commonMsg.CommontError));
         })
 });
 module.exports = router;

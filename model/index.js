@@ -4,5 +4,6 @@ export const MBookR = require('./MBookR');
 export const Medium = require('./Medium');
 export const CNN = require('./CNN');
 
+export const Reuters = require('./Reuters');
 
 
