@@ -11,7 +11,9 @@
     "scripts": {
         "test": "mocha",
         "build": "./node_modules/babel-cli/bin/babel.js  **/**.js app.js --ignore dist node_modules public views --out-dir dist --presets es2015 --watch",
-        "start": "node ./bin/www"
+        "start": "node ./bin/www",
+        "run":"nodemon ./dist/bin/www"
+        
     },
     "dependencies": {
         "bcrypt": "^1.0.2",

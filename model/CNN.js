@@ -23,7 +23,8 @@ CNN.fields = [
     'summary',
     'tag',
     'source',
-    'text'
+    'text',
+    'id',
 ];
 
 CNN.findRecent = (tag = 'all', count = 5, fields = CNN.fields) => {
@@ -43,8 +44,8 @@ CNN.findRecent = (tag = 'all', count = 5, fields = CNN.fields) => {
 }
 
 CNN.findById = (id, fields) => {
-    console.log('-----------from cnn model');
-    console.log(id);
+    // console.log('-----------from cnn model');
+    // console.log(id);
     return CNN
         .find({_id: new ObjectId(id)})
         .select(fields.join(' '))

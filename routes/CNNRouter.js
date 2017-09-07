@@ -5,7 +5,6 @@ const msg = require('../utils/commonMsg');
 
 
 router.get(/recent/, (req, res, next) => {
-    console.log('-------from cnn get recent');
     let tag = req.query.tag || 'all';
     CNN
         .findRecent(tag, req.checked.count, req.checked.fields)
@@ -22,8 +21,10 @@ router.get(/recent/, (req, res, next) => {
 });
 
 router.get(/^\/id-(\w+)$/, (req, res, next) => {
+    // console.log('-------fields');
+    // console.log(req.checked.fields);
     CNN
-        .findById(req.params[0], fields = req.checked.fields)
+        .findById(req.params[0], req.checked.fields)
         .then(data => {
             if (data.length == 0) {
                 next(error.get404(msg.NoSuchResource));

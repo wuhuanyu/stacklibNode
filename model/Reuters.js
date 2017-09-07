@@ -13,13 +13,16 @@ const ReutersSchema = new mongoose.Schema({
 const Reuters = mongoose.model('reuters', ReutersSchema);
 
 Reuters.fields = [
+    'id',
     'url',
     'crawled_at',
     'title',
     'summary',
     'text',
     'tag',
-    'image_urls'
+    'image_urls',
+    'timestamp',
+    'source',
 ]
 
 Reuters.findRecent = (tag = 'all', count = 5, fields = Reuters.fields) => {

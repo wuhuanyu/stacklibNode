@@ -27,6 +27,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(parser);
 
+app.use((req, res, next) => {
+
+    res.header("Access-Control-Allow-Origin", "*");
+    next();
+})
 app.use(function (req, res, next) {
     req.app.utils = {
         commonMsg,
@@ -84,7 +89,7 @@ app.use('/api/v1/mbook', routers.MBookRouter);
 app.use('/api/v1/medium', routers.MediumRouter);
 app.use('/api/v1/mbookr', routers.MBookRRouter);
 app.use('/api/v1/cnn', routers.CNNRouter);
-app.use('/api/v1/reuters',routers.ReutersRouter);
+app.use('/api/v1/reuters', routers.ReutersRouter);
 
 app.use(function (err, req, res, next) {
     res.locals.message = err.message;

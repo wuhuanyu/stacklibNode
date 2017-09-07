@@ -84,7 +84,10 @@ router.get(/^\/id-(\w+)$/, (req, res, next) => {
         .findById(id, req.checked.fields)
         .then((data) => {
             if (data !== null) {
-                res.json(data);
+                res.json({
+                    count:1,
+                    data:data
+                });
             }
         }, (err) => {
             next(commonError.get404(commonMsg.NoSuchResource));

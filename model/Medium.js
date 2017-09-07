@@ -18,6 +18,7 @@ Medium.fields = [
     'crawled_at',
     'title',
     'text',
+    'summary',
     'image_urls',
     'id',
     'url'
