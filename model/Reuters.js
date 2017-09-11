@@ -12,6 +12,20 @@ const ReutersSchema = new mongoose.Schema({
 }, {collection: 'reuterss'});
 const Reuters = mongoose.model('reuters', ReutersSchema);
 
+Reuters.tags= [
+    'business',
+    'politics',
+    'tech',
+    'china',
+    'life',
+    'entertainment',
+    'art',
+    'sport',
+]
+
+
+
+
 Reuters.fields = [
     'id',
     'url',

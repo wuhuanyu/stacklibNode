@@ -19,6 +19,25 @@ router.get(/recent/, (req, res, next) => {
         });
 })
 
+router.get(/^\/tag-(\w+)$/, (req, res, next) => {
+    let tag = req.params[0] || 'all';
+    if (Reuters.tags.indexOf(tag) < 0) {
+        next(error.get404(emsg.NoSuchResource));
+    }
+    Reuters
+        .findRecent(tag, req.checked.count, req.checked.fields)
+        .then(data => {
+            if (data.length == 0) {
+                next(error.get404(emsg.NoSuchResource));
+            } else {
+                res.json({count: data.length, data: data});
+            }
+        })
+        .catch(e => {
+            next(error.get400(e.message || emsg.CommontError))
+        });
+})
+
 router.get(/^\/id-(\w+)$/, (req, res, next) => {
     let id = req.params[0];
     Reuters

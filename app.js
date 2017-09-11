@@ -24,7 +24,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-
+app.use('/static',express.static('public'));
 app.use(parser);
 
 app.use((req, res, next) => {
@@ -90,6 +90,7 @@ app.use('/api/v1/medium', routers.MediumRouter);
 app.use('/api/v1/mbookr', routers.MBookRRouter);
 app.use('/api/v1/cnn', routers.CNNRouter);
 app.use('/api/v1/reuters', routers.ReutersRouter);
+app.use('/api/v1/img/tags',routers.TagImgRouter);
 
 app.use(function (err, req, res, next) {
     res.locals.message = err.message;

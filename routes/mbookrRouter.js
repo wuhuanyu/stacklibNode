@@ -23,7 +23,6 @@ router.get(/^\/id-(\w+)$/, (req, res, next) => {
 
 
 router.get(/^\/url-(\w+)$/, (req, res, next) => {
-    console.log('-----------from mbookr get url');
     let url = req.params[0];
     MBookR.findByUrl(url, req.checked.fields).then((data) => {
         console.log(data);

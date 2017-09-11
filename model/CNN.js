@@ -14,6 +14,19 @@ const CNNSchema = new mongoose.Schema({
 }, {collection: 'cnns'});
 
 const CNN = mongoose.model('cnn', CNNSchema);
+
+CNN.tags=[
+    'business',
+    'entertainment',
+    'politics',
+    'china',
+    'tech',
+    'sport',
+    'life',
+    'health',
+]
+
+
 CNN.fields = [
     'crawled_at',
     'title',
@@ -50,5 +63,11 @@ CNN.findById = (id, fields) => {
         .find({_id: new ObjectId(id)})
         .select(fields.join(' '))
 };
+
+
+
+CNN.findByTag=(tag,fields)=>{
+    // return CNN.find({tag:tag})
+}
 
 module.exports = CNN;

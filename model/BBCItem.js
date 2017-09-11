@@ -19,19 +19,31 @@ const BBCSchema = new Schema({
 
 const BBC = mongoose.model('bbc', BBCSchema);
 
-BBC.tags = [
-    'world',
-    'africa',
-    'australia',
-    'latin',
-    'middle_east',
-    'asia',
-    'uk',
+BBC.tags =[
+    'china',
+    'politics',
+    'aisa',
     'business',
     'tech',
-    'entertainment_arts',
-    'health'
-];
+    'entertainment',
+    'health',
+]
+
+
+// BBC.tags = [
+//     'world',
+//     'africa',
+//     'australia',
+//     'latin',
+//     'middle_east',
+//     'asia',
+//     'uk',
+//     'politics',
+//     'business',
+//     'tech',
+//     'entertainment_arts',
+//     'health'
+// ];
 BBC.fields = [
     'source',
     'crawled_at',
