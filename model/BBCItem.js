@@ -22,7 +22,7 @@ const BBC = mongoose.model('bbc', BBCSchema);
 BBC.tags =[
     'china',
     'politics',
-    'aisa',
+    'asia',
     'business',
     'tech',
     'entertainment',
