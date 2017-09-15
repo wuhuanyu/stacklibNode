@@ -6,3 +6,7 @@ bin/babel
 .idea/*
 .vscode/*
 babel-test
+
+
+ui/node_modules/**
+ui/dist/**
