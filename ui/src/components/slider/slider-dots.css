@@ -1,0 +1,13 @@
+.slider-dot{
+    display: inline-block;
+    width:3px;
+    height: 3px;
+    border:3px solid #cccccc;
+    margin: 6px;
+    cursor: pointer;
+    border-radius: 19px;
+}
+
+.slider-dot-selected{
+    background:#ccc;
+}
