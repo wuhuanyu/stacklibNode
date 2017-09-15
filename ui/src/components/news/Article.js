@@ -2,18 +2,11 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {withStyles} from 'material-ui/styles';
 import Paper from 'material-ui/Paper';
-import {CardHeader, CardActions} from 'material-ui/Card';
-import Avatar from 'material-ui/Avatar';
-import red from 'material-ui/colors/red';
-import FavoriteIcon from 'material-ui-icons/Favorite';
 import ShareIcon from 'material-ui-icons/Share';
 import Chip from 'material-ui/Chip';
-import Spider from '../../repository/spider.png';
-import Schedule from 'material-ui-icons/Schedule';
 import AppBar from 'material-ui/AppBar';
 import Toolbar from 'material-ui/Toolbar';
 import Typography from 'material-ui/Typography';
-import Button from 'material-ui/Button';
 import IconButton from 'material-ui/IconButton';
 import {constructImgUrl} from '../../client/urlConstruct';
 import MenuIcon from 'material-ui-icons/Menu';
@@ -179,7 +172,7 @@ class Article extends Component {
                             : null}
                     </Typography>
                     <div className={classes.imgContainer}>
-                        <img src={image_urls && image_urls[0]||constructImgUrl('imgholder')} className={classes.img}/>
+                        <img src={(image_urls && image_urls[0])||constructImgUrl('imgholder')} className={classes.img}/>
                     </div>
                     {texts}
                 </Paper>

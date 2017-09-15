@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import List from 'material-ui/List';
-import Divider from 'material-ui/Divider';
 import BookItem from './BookItem';
 
 class BookList extends Component {

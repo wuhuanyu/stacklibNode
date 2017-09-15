@@ -1,9 +1,7 @@
 import React, {Component} from 'react';
-import PropTypes from 'prop-types';
 import BlogItem from './BlogItem';
 import Divider from 'material-ui/Divider';
-import {withStyles} from 'material-ui/styles';
-import {capitalize, num2Time} from '../../utility/Utils';
+import {num2Time} from '../../utility/Utils';
 import {Link} from 'react-router-dom';
 
 const CSS = theme => ({});

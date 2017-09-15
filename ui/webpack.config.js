@@ -20,7 +20,7 @@ const config = {
     entry: {
         client: './src/client/client.js',
         cache: './src/client/cache.js',
-        // bundle: './src/index.js'
+        bundle: './src/index.js'
     },
     output: {
         path: path.join(__dirname, outputPath),
@@ -55,8 +55,6 @@ const config = {
         ]
     },
 
-    plugins:plugins,
-    // resolve: {     // root: __dirname, extensions: ['', '.js', '.jsx'] },
 
     devtool: 'source-map'
 };

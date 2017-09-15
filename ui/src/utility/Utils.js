@@ -9,7 +9,6 @@ export const capitalize = (str) => {
 }
 
 export const num2Time = (date) => {
-    let newDate;
     if (isNum(date)) {
         date=monment.unix(date);
         return date.toString();

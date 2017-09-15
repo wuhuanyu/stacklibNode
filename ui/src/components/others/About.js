@@ -1,5 +1,4 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import React from 'react';
 import Typography from 'material-ui/Typography';
 import withAppBar from './withAppBar';
 import Paper from 'material-ui/Paper';

@@ -1,12 +1,7 @@
 import React, {Component} from 'react';
-import logo from './logo.svg';
 import './App.css';
 import ScrollableTab from './components/ScrollBar'
-import {CircularProgress} from 'material-ui/Progress';
-import BlogItem from './components/blog/BlogItem';
 import MainContainer from './MainContainer';
-import {BrowserRouter as Router} from 'react-router-dom';
-import NewsArticleContainer from './components/news/NewsArticleContainer';
 import {withStyles} from 'material-ui/styles';
 
 const styles = theme => ({

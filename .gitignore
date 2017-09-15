@@ -10,3 +10,4 @@ babel-test
 
 ui/node_modules/**
 ui/dist/**
+ui/build/**

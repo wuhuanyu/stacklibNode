@@ -1,15 +1,13 @@
-import React, {Component} from 'react';
+import React from 'react';
 import Card, {CardContent, CardMedia} from 'material-ui/Card';
 import PropType from 'prop-types';
-import {ListItem} from 'material-ui/List';
 import Typography from 'material-ui/Typography';
 import {withStyles} from 'material-ui/styles';
 import Divider from 'material-ui/Divider';
+
 const CSS = theme => ({
     root: {
         display: 'flex',
-        // height:200,
-        // marginTop:'5px',
         marginBottom:'5px',
     },
 

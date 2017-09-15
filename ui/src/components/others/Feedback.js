@@ -4,16 +4,11 @@ import PropTypes from 'prop-types';
 import Typography from 'material-ui/Typography';
 import TextField from 'material-ui/TextField';
 import withAppBar from './withAppBar';
-import Paper from 'material-ui/Paper';
 import Button from 'material-ui/Button';
 import Menu, {MenuItem} from 'material-ui/Menu';
-import {withStyles} from 'material-ui/styles';
 import Avatar from 'material-ui/Avatar';
-import doge from '../../imgs/doge.jpg';
-import doge2 from '../../imgs/doge2.jpg';
-const postApi = "";
+import {constructImgUrl} from '../../client/urlConstruct';
 
-const CSS = () => ({});
 class Feedback extends Component {
     constructor(props) {
         super(props);
@@ -72,7 +67,7 @@ class Feedback extends Component {
                     width: '100px',
                     height: '100px'
                 }}
-                    src={doge}/>
+                    src={constructImgUrl('doge')}/>
                 <div style={{width:'100%'}}>
                     <Typography
                         type="title"
@@ -157,7 +152,7 @@ class Feedback extends Component {
                             </Button>
                         </div>
                     </form>
-                    <img src={doge2} style={{width:'100%',height:'auto',display:'block',margin:'20px,auto'}}/>
+                    <img src={constructImgUrl('doge2')} style={{width:'100%',height:'auto',display:'block',margin:'20px,auto'}}/>
                 </div>
             </div>
         )

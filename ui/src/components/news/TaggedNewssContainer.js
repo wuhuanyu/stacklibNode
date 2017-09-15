@@ -1,6 +1,4 @@
 import React, {Component} from 'react';
-import PropTypes from 'prop-types';
-import Typography from 'material-ui/Typography';
 import NavBar from '../NavBar';
 import {AllNewsFields, NewsListItemFields} from '../../constants/Constants';
 import {TaggedLifeNewss, TaggedCommonNewss} from './TaggedNewss';

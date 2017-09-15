@@ -1,12 +1,7 @@
-import React, {Component} from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import {withStyles} from 'material-ui/styles';
-import Paper from 'material-ui/Paper';
-import List, {ListItem} from 'material-ui/List';
-import {CardContent, CardMedia} from 'material-ui/Card';
 import Typography from 'material-ui/Typography';
-import NewsListItem from './NewsListItem';
-import Chip from 'material-ui/Chip';
 import ButtonBase from 'material-ui/ButtonBase';
 
 const CSS = theme => ({

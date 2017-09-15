@@ -1,12 +1,4 @@
 import React, {Component} from 'react';
-import Card, {CardMedia} from 'material-ui/Card';
-import PropTypes from 'prop-types';
-import AppBar from 'material-ui/AppBar';
-import Toolbar from 'material-ui/Toolbar';
-import IconButton  from 'material-ui/IconButton';
-import MenuIcon from 'material-ui-icons/Menu';
-import Typography from 'material-ui/Typography';
-import Button  from 'material-ui/Button';
 import withAppBar from './withAppBar';
 
 const api = "http://gank.io/api/data/%E7%A6%8F%E5%88%A9/5/1";

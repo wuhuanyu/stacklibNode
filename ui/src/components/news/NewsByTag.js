@@ -1,24 +1,13 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import {withStyles} from 'material-ui/styles';
-import Paper from 'material-ui/Paper';
-import List, {ListItem} from 'material-ui/List';
-import {CardContent, CardMedia} from 'material-ui/Card';
-import Typography from 'material-ui/Typography';
 import NewsListItem from './NewsListItem';
-import Chip from 'material-ui/Chip';
-import ButtonBase from 'material-ui/ButtonBase';
 import Tag from './Tag';
 import {host, port} from '../../constants/Constants';
 import {Link} from 'react-router-dom';
-import {withLink} from '../withLink';
 
 const tag_img_url = `http://${host}:${port}/static/images/`;
-class NewsByTag extends Component {
-    constructor(props) {
-        super(props);
-    }
 
+class NewsByTag extends Component {
     render() {
         let {newss, classes, tag_img_url, tag, source} = this.props;
         let items = newss.map((d, idx) => <Link

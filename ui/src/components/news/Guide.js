@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import NewsByTag from './NewsByTag';
 import Header from './Header';
-import {NewsTags, NewsListItemFields} from '../../constants/Constants';
+import {NewsListItemFields} from '../../constants/Constants';
 import {domain, host, port} from '../../constants/Constants';
 import {capitalize} from '../../utility/Utils';
 import {Link} from 'react-router-dom';

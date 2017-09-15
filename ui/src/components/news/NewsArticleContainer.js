@@ -1,8 +1,6 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import {AllNewsFields} from '../../constants/Constants';
 import Article from './Article';
-import {num2Time} from '../../utility/Utils';
 
 class NewsArticleContainer extends Component {
     constructor(props) {
@@ -14,7 +12,15 @@ class NewsArticleContainer extends Component {
 
     fetchData(source, _id) {
         // mockClient
+        // mockClient
         //     .getNewsById(source, _id, AllNewsFields)
+        //     .then(res => {
+        //         console.log(res);
+        //         if(res.data.timestamp){
+        //             res.data.timestamp=num2Time(res.data.timestamp);
+        //         }
+        //         this.setState({data: res.data})
+        //     })  //     .getNewsById(source, _id, AllNewsFields)
         //     .then(res => {
         //         console.log(res);
         //         if(res.data.timestamp){

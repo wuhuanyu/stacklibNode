@@ -3,12 +3,11 @@ import Menu, {MenuItem} from 'material-ui/Menu';
 import {findDOMNode} from 'react-dom';
 import PropTypes from 'prop-types';
 import AppBar from 'material-ui/AppBar';
-import Typography from 'material-ui/Typography';
 import Button from 'material-ui/Button';
 import {withStyles} from 'material-ui/styles';
 import Book from 'material-ui-icons/Book';
 import IconButton from 'material-ui/IconButton';
-import ToolBar from 'material-ui/Toolbar';
+
 const CSS = {
     root: {
         width: '100%',

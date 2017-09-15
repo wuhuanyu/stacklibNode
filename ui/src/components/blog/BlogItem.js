@@ -3,13 +3,9 @@ import FavoriteIcon from 'material-ui-icons/Favorite';
 import ShareIcon from 'material-ui-icons/Share'
 import PropTypes from 'prop-types';
 import {withStyles} from 'material-ui/styles';
-import Paper from 'material-ui/Paper';
-import List, {ListItem} from 'material-ui/List';
 import Card,{CardContent, CardMedia,CardHeader,CardActions} from 'material-ui/Card';
 import Typography from 'material-ui/Typography';
 import Avatar from 'material-ui/Avatar';
-import Chip from 'material-ui/Chip';
-import ButtonBase from 'material-ui/ButtonBase';
 import IconButton from 'material-ui/IconButton';
 import red from 'material-ui/colors/red';
 
@@ -34,10 +30,6 @@ const CSS = theme=>({
 })
 
 class BlogItem extends Component{
-    constructor(props){
-        super(props);
-    }
-
 
     render(){
         let {title,crawled_at,img_urls,summary,classes}=this.props;

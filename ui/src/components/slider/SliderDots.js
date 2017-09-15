@@ -3,9 +3,6 @@ import PropType from 'prop-types';
 import SliderDotsCss from './slider-dots.css';
 
 class SliderDots extends Component {
-    constructor(props) {
-        super(props)
-    }
 
     handleDotClick(i) {
 

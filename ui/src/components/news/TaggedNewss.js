@@ -1,13 +1,10 @@
-import React, {Component} from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import {host,port} from '../../constants/Constants';
-import List from 'material-ui/List';
 import {GridList, GridListTile, GridListTileBar} from 'material-ui/GridList';
-import ListItem from 'material-ui/List';
 import {num2Time} from '../../utility/Utils';
 
 import Tag from './Tag';
-import NewsListItem from './NewsListItem';
 import NewsByTag from './NewsByTag';
 import Slider from '../slider/Slider';
 

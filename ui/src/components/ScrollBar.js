@@ -7,16 +7,6 @@ import MenuIcon from 'material-ui-icons/Menu';
 import AppBar from 'material-ui/AppBar'
 import Tabs,{Tab} from 'material-ui/Tabs';
 import LeftDrawer from './LeftDrawer';
-import Button from 'material-ui/Button';
-import List, { ListItem, ListItemIcon, ListItemText } from 'material-ui/List';
-import Divider from 'material-ui/Divider';
-import InboxIcon from 'material-ui-icons/Inbox';
-import DraftsIcon from 'material-ui-icons/Drafts';
-import StarIcon from 'material-ui-icons/Star';
-import SendIcon from 'material-ui-icons/Send';
-import MailIcon from 'material-ui-icons/Mail';
-import DeleteIcon from 'material-ui-icons/Delete';
-import ReportIcon from 'material-ui-icons/Report';
 
 const styleSheet =theme=>({
     appbar:{

@@ -1,13 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {withStyles} from 'material-ui/styles';
-import Paper from 'material-ui/Paper';
 import Typography from 'material-ui/Typography';
 import {ListItem} from 'material-ui/List';
 import Divider from 'material-ui/Divider';
 import Card,{CardContent,CardMedia} from 'material-ui/Card';
-import {withLink} from '../withLink';
-import {Link} from 'react-router-dom'
 import {constructImgUrl} from '../../client/urlConstruct';
 const NewsListItem = (props) => {
     let {title,img}= props;
