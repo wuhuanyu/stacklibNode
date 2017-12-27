@@ -1,9 +1,13 @@
-const QueryParamsInvalid = 'Query params invalid';
 
-const NoSuchResource = 'No such resource';
 
-const QueryKeyWordsTooShort = 'Query key words too short';
-module.exports.QueryParamsInvalid = QueryParamsInvalid;
+module.exports.QueryParamsInvalid = 'Query params invalid';
 module.exports.CommontError = "Error";
-module.exports.NoSuchResource = NoSuchResource;
-module.exports.QueryKeyWordsTooShort =QueryKeyWordsTooShort;
+module.exports.NoSuchResource = "No such resource"
+module.exports.QueryKeyWordsTooShort ="Query keywords too short"
+
+module.exports.NoSuchUser="No Such User";
+module.exports.WrongPassword="Wrong Password";
+module.exports.SignUpOK="Sign Up Ok";
+
+module.exports.CommentInValid="Comment Invalid";
+module.exports.CommentInserted="Post Comment OK";

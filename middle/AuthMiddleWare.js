@@ -4,25 +4,6 @@ const md5 = require('md5');
 
 const basicAuth=require('express-basic-auth');
 const executeQuery = require('../utils/DataQuery').executeQuery;
-
-
-// function authorizer(user,name){
-//     let sql = `select password from passwords where name="${user}"`;
-//     executeQuery("credentials",sql,(err,results,fields)=>{
-//         if(results.lengh===0){
-//             return false;
-//         }
-//     })
-// }
-
-// module.exports=function(req,res,next){
-//     const app= req.app;
-//     app.use(basicAuth({
-//         authorizer:authorizer,
-//         authorizeAsync:true,
-//     }));
-// }
-
 module.exports = function (req, res, next) {
     let auth = req.get('authorization');
     if (!auth) {
@@ -36,7 +17,7 @@ module.exports = function (req, res, next) {
      */
     let uNC = credentials[0];
     let pC = md5(credentials[1]);
-    let sql = `select password from passwords where name="${uNC}"`;
+    let sql = `select password,id from passwords where name="${uNC}"`;
     executeQuery("credentials", sql, (err, results, fields) => {
         console.log(results[0].password);
         if(results.length===0){
@@ -45,9 +26,16 @@ module.exports = function (req, res, next) {
             })
         }
         else if(results[0].password===pC){
-            return res.status(200).json({
-                msg:"Authorized"
-            });
+            /**
+             * store username,passord,id
+             */
+            req.app.locals.username=credentials[0];
+            req.app.locals.password=results[0].password;
+            req.app.locals.id=results[0].id;
+            /**
+             * social 
+             */
+            next();
         }
         else if(results[0].password!=pC){
             return res.status(400).json({
