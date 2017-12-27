@@ -141,6 +141,7 @@ router.get(/^\/id-(\w+)$/, (req, res, next) => {
  */
 router.get(/^\/tag-(\w+)$/, (req, res, next) => {
 
+    // console.log("this is bbc router");
     let tag = req.params[0];
 
     if (BBC.tags.indexOf(tag) === -1) {

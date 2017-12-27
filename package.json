@@ -10,7 +10,7 @@
   "private": true,
   "scripts": {
     "test": "mocha",
-    "build": "./node_modules/babel-cli/bin/babel.js  **/**.js app.js --ignore dist,node_modules,public,views --out-dir dist --presets es2015 && cp -r ./public ./bin ./dist",
+    "build": "./node_modules/babel-cli/bin/babel.js  **/*.js ApiApp.js AccountApp.js app.js --ignore dist,node_modules,public,views --out-dir dist --presets es2015 && cp -r ./public ./bin ./dist",
     "start": "node ./bin/www",
     "run": "nodemon ./dist/bin/www"
   },
@@ -29,7 +29,9 @@
     "express-redis-cache": "^1.0.0",
     "express-session": "^1.15.4",
     "file-system": "^2.2.2",
+    "md5": "^2.2.1",
     "morgan": "~1.8.1",
+    "mysql": "^2.15.0",
     "passport": "^0.3.2",
     "path": "^0.12.7",
     "react": "^15.6.1",
